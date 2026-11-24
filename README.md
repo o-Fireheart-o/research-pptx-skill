@@ -21,19 +21,21 @@
 
 **1. Codex에게 시키기 (가장 쉬움)**
 
-> https://github.com/o-Fireheart-o/research-pptx-skill 저장소의 research-pptx 폴더를 내 Codex 스킬 폴더에
-> 설치해 줘.
+> https://github.com/o-Fireheart-o/research-pptx-skill 저장소의 research-pptx 폴더와 research-pptx-init
+> 폴더를 내 Codex 스킬 폴더에 설치해 줘.
 
 **2. ZIP으로 받기**
 
 1. 이 페이지 위쪽의 초록색 **Code** 버튼 > **Download ZIP**
-2. 압축을 풀고, 안에 있는 `research-pptx` 폴더를 `C:\Users\<사용자>\.codex\skills\`에 복사
+2. 압축을 풀고, 안에 있는 `research-pptx` 폴더와 `research-pptx-init` 폴더를
+   `C:\Users\<사용자>\.codex\skills\`에 복사
 
 **3. git 명령으로 받기 (PowerShell)**
 
 ```
 git clone https://github.com/o-Fireheart-o/research-pptx-skill.git
 Copy-Item -Recurse research-pptx-skill\research-pptx "$env:USERPROFILE\.codex\skills\"
+Copy-Item -Recurse research-pptx-skill\research-pptx-init "$env:USERPROFILE\.codex\skills\"
 ```
 
 설치 뒤 Codex를 다시 열고 "어떤 스킬을 쓸 수 있어?"라고 물어 `research-pptx`가 보이는지 확인합니다. 보이지
@@ -42,7 +44,8 @@ Copy-Item -Recurse research-pptx-skill\research-pptx "$env:USERPROFILE\.codex\sk
 
 ## 사용
 
-작업 폴더에 `template/`(양식), `source/`(연구 자료), `figures/`(그림)를 만들고 그 폴더에서 Codex를 엽니다.
+빈 폴더에서 Codex를 열고 "연구 PPT 폴더 만들어 줘"라고 하면 작업 폴더가 만들어지고, 무엇을 어디에 넣을지
+대화창에서 알려 줍니다. `template/`(양식)과 `source/`(연구 자료)에 파일을 넣은 뒤 이렇게 말합니다.
 
 > template 폴더의 양식으로 연구 제안 발표 자료를 만들 거야. source 폴더 자료를 보고 스토리라인부터 잡아 줘.
 > 발표는 15분이야.
@@ -52,7 +55,9 @@ Copy-Item -Recurse research-pptx-skill\research-pptx "$env:USERPROFILE\.codex\sk
 ## 구성
 
 ```
-research-pptx/
+research-pptx-init/   작업 폴더를 준비하고 다음에 할 일을 알려 주는 스킬
+  SKILL.md
+research-pptx/        PPT를 만드는 스킬
   SKILL.md            전체 흐름과 원칙
   INSTALL.md          설치와 처음 쓰는 법
   references/         단계별 상세 지침 (양식 분석, 스토리라인, 그림·참고문헌, 조립, 검수, 파생판)

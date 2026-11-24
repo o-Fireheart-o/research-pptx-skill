@@ -6,6 +6,7 @@
 
 | 스크립트 | 용도 | 쓰기 |
 |---|---|---|
+| `init_project.py [<folder>] [--name N] [--sort]` | 작업 폴더와 안내 파일 만들기, 폴더 상태와 다음 할 일 알려 주기. `--sort`는 폴더 바로 아래의 문서·그림을 source/figures로 옮김 | 없는 것만 만듦 |
 | `deck_profile.py <deck> [slides]` | 템플릿·덱의 레이아웃과 슬라이드 목록, 슬라이드별 도형 상세(위치, 색, 글꼴) | 읽기 전용 |
 | `storyboard.py make <storyline.md> <out.pptx> [--template T] [--layout L]` / `read <deck> <storyline.md>` / `map <deck>` | 뼈대 덱 만들기 / 사용자가 고친 뼈대 덱을 `storyline.md`로 읽기 / 1번 장 흐름도 다시 그리기 | make는 새 파일, read는 `storyline.md` 갱신(.bak 보관), map은 덱을 그 자리에서 고침 |
 | `storyline_check.py <storyline.md> [--json out.json]` | 스토리라인 파일 읽기: 슬라이드 표, 장별 분량, 발표 시간 대비 장수, 비어 있는 장, 없는 자료, `?` 목록. `--json`은 조립용 데이터 | 읽기 전용 |

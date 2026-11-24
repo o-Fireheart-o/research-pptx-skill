@@ -149,7 +149,7 @@ box(s, 0.6, 2.4, 5.2, 2.55,
     size=14, fillc=PALE, anchor=MSO_ANCHOR.TOP)
 box(s, 6.1, 1.85, 6.6, 0.5, "가장 쉬운 방법: Codex에게 시키기", size=16, fillc=TEAL, color=WHITE, bold=True)
 say(s, 6.1, 2.4, 6.6, 1.5,
-    REPO + " 저장소의 research-pptx 폴더를 내 Codex 스킬 폴더에 설치해 줘.", size=14)
+    REPO + " 저장소의 research-pptx 폴더와 research-pptx-init 폴더를 내 Codex 스킬 폴더에 설치해 줘.", size=13)
 box(s, 6.1, 4.0, 6.6, 0.95,
     ["① 위 문장을 Codex에 붙여 넣습니다",
      "② 설치가 끝나면 Codex를 닫았다가 다시 엽니다"],
@@ -168,32 +168,33 @@ box(s, 0.6, 2.4, 5.9, 2.65,
     ["① 위 주소를 브라우저에서 엽니다",
      "② 초록색 Code 버튼 > Download ZIP",
      "③ 받은 ZIP의 압축을 풉니다",
-     "④ 안에 있는 research-pptx 폴더를 복사해 아래 위치에 붙여 넣습니다",
+     "④ research-pptx, research-pptx-init 두 폴더를 아래 위치에 복사합니다",
      ("  C:\\Users\\<사용자>\\.codex\\skills\\", {"size": 13, "color": TEAL, "bold": True}),
      "⑤ Codex를 다시 엽니다"],
     size=13, fillc=PALE, anchor=MSO_ANCHOR.TOP)
 box(s, 6.8, 1.85, 5.9, 0.5, "방법 B: git 명령으로 받기 (PowerShell)", size=16, fillc=NAVY, color=WHITE, bold=True)
 box(s, 6.8, 2.4, 5.9, 2.65,
     [("git clone " + REPO + ".git", {"size": 11, "color": TEAL, "bold": True}),
-     ("Copy-Item -Recurse research-pptx-skill\\research-pptx", {"size": 11, "color": TEAL, "bold": True}),
+     ("cd research-pptx-skill", {"size": 11, "color": TEAL, "bold": True}),
+     ("Copy-Item -Recurse research-pptx, research-pptx-init", {"size": 11, "color": TEAL, "bold": True}),
      ("    \"$env:USERPROFILE\\.codex\\skills\\\"", {"size": 11, "color": TEAL, "bold": True}),
      "",
-     "· 첫 줄은 저장소를 내려받고, 둘째 줄은 스킬 폴더를 Codex 스킬 폴더로 복사합니다",
+     "· 저장소를 내려받아 두 스킬 폴더를 Codex 스킬 폴더로 복사합니다",
      "· 끝나면 Codex를 다시 엽니다"],
     size=13, fillc=PALE, anchor=MSO_ANCHOR.TOP)
 box(s, 0.6, 5.3, 5.9, 1.25,
     [("설치 후 폴더 모습", {"size": 14, "bold": True, "color": NAVY}),
      ("C:\\Users\\<사용자>\\.codex\\skills\\research-pptx\\SKILL.md", {"size": 12, "color": TEAL, "bold": True}),
-     ("※ research-pptx 폴더 바로 안에 SKILL.md가 있어야 합니다", {"size": 11, "color": GRAY})],
+     ("※ research-pptx-init 폴더도 같은 자리에 나란히 있어야 합니다", {"size": 11, "color": GRAY})],
     size=13, fillc=WHITE, linec=LINE)
 box(s, 6.8, 5.3, 5.9, 1.25,
     [("새 버전으로 바꾸기", {"size": 14, "bold": True, "color": NAVY}),
-     "같은 방법으로 다시 받아 research-pptx 폴더를 덮어씁니다",
+     "같은 방법으로 다시 받아 두 폴더를 덮어씁니다",
      ("※ 스킬이 보이지 않으면 폴더를 .agents\\skills\\ 로 옮겨 봅니다", {"size": 11, "color": GRAY})],
     size=13, fillc=WHITE, linec=LINE)
 
 # ------------------------------------------------------------------ 4 folder
-s = new("작업 폴더 만들기", "문서 하나에 폴더 하나. 받은 자료를 세 폴더에 나눠 넣습니다", "2. 준비")
+s = new("작업 폴더는 자동으로 만들어집니다", "빈 폴더에서 Codex를 열고 \"연구 PPT 폴더 만들어 줘\"라고 하면, 폴더를 만들고 다음에 할 일을 알려 줍니다", "2. 준비")
 rows = [("template", "발표 양식이나 지난 발표 자료 (.pptx)", "내가 넣음", NAVY),
         ("source", "공고문, 초안, 논문, 데이터, 지난 제안서·보고서", "내가 넣음", NAVY),
         ("figures", "쓸 그림과 그래프", "내가 넣음", NAVY),
@@ -205,7 +206,7 @@ for i, (name, desc, who, c) in enumerate(rows):
     box(s, 0.6, y, 2.9, 0.62, name, size=15, fillc=c, color=WHITE, bold=True)
     box(s, 3.6, y, 6.6, 0.62, desc, size=14, fillc=PALE)
     box(s, 10.3, y, 2.4, 0.62, who, size=13, fillc=WHITE, linec=c, color=c, bold=True, align=PP_ALIGN.CENTER)
-text(s, 0.6, 6.5, 12.1, 0.4, "※ template 폴더의 양식 원본은 고쳐지지 않습니다. 완성본은 항상 output에 따로 만들어집니다", size=13, color=GRAY)
+text(s, 0.6, 6.45, 12.1, 0.5, "※ 폴더에 이미 파일이 있으면 어디로 옮길지 물어봅니다. 무엇을 해야 할지 모르겠으면 \"지금 뭘 하면 돼?\"라고 묻습니다", size=13, color=GRAY)
 
 # ------------------------------------------------------------------ 5 flow
 s = new("전체 흐름", "내가 확인해 줄 곳은 두 번입니다: 스토리라인과 샘플 슬라이드", "3. 흐름")
@@ -387,26 +388,28 @@ faq = [("스킬이 안 쓰이는 것 같다", "\"research-pptx 스킬로 해 줘
        ("[확인 필요]가 많이 남았다", "자료에 없는 내용입니다. 해당 자료를 source에 넣거나 값을 말해 주면 채워집니다"),
        ("글이 너무 많다 / 적다", "샘플 단계에서 말하는 것이 가장 좋습니다. 뒤에 말하면 모든 장을 다시 만듭니다"),
        ("양식의 예전 내용이 남아 있다", "몇 번 장인지 알려 주면 지웁니다. 지난 발표 자료를 양식으로 쓸 때 생길 수 있습니다"),
+       ("지금 뭘 해야 할지 모르겠다", "\"지금 뭘 하면 돼?\"라고 묻습니다. 폴더 상태를 보고 다음 할 일을 알려 줍니다"),
        ("며칠 뒤 이어서 하고 싶다", "같은 폴더에서 \"work/NOTES.md 읽고 이어서 해 줘\"라고 합니다")]
 for i, (q, a) in enumerate(faq):
-    y = 1.35 + i * 0.88
-    box(s, 0.6, y, 4.0, 0.76, q, size=14, fillc=NAVY, color=WHITE, bold=True)
-    box(s, 4.7, y, 8.0, 0.76, a, size=13, fillc=PALE)
+    y = 1.3 + i * 0.78
+    box(s, 0.6, y, 4.0, 0.68, q, size=14, fillc=NAVY, color=WHITE, bold=True)
+    box(s, 4.7, y, 8.0, 0.68, a, size=13, fillc=PALE)
 
 # ------------------------------------------------------------------ 15 cheat sheet
 s = new("한 장 요약", "순서대로 이렇게 말하면 됩니다", "5. 요령")
-steps = [("시작", "template 양식으로 연구 제안 발표 자료를 만들 거야. source 자료를 보고 스토리라인부터 잡아 줘. 발표는 15분이야."),
+steps = [("폴더 준비", "연구 PPT 폴더 만들어 줘.   (그다음 template과 source 폴더에 파일을 넣습니다)"),
+         ("시작", "template 양식으로 연구 제안 발표 자료를 만들 거야. source 자료를 보고 스토리라인부터 잡아 줘. 발표는 15분이야."),
          ("뼈대 덱을 고친 뒤", "뼈대 덱 고쳤어. 읽어 줘."),
          ("스토리라인 확정", "이대로 만들어 줘."),
          ("샘플을 본 뒤", "좋아, 이대로 전체 만들어 줘.   /   글을 조금 줄이고 표 글자를 키워 줘."),
          ("완성본을 고친 뒤", "output의 파일을 내가 고쳤어. 그 파일 기준으로 7번 장만 고쳐 줘."),
          ("이어서 할 때", "work/NOTES.md와 work/progress.json 읽고 이어서 해 줘.")]
 for i, (h, b) in enumerate(steps):
-    y = 1.85 + i * 0.78
-    box(s, 0.6, y, 2.6, 0.66, h, size=14, fillc=TEAL, color=WHITE, bold=True, align=PP_ALIGN.CENTER)
-    box(s, 3.3, y, 9.4, 0.66, b, size=13, fillc=WHITE, linec=TEAL)
+    y = 1.8 + i * 0.7
+    box(s, 0.6, y, 2.6, 0.6, h, size=14, fillc=TEAL, color=WHITE, bold=True, align=PP_ALIGN.CENTER)
+    box(s, 3.3, y, 9.4, 0.6, b, size=13, fillc=WHITE, linec=TEAL)
     if i < len(steps) - 1:
-        arrow(s, 1.9, y + 0.67, 1.9, y + 0.78, TEAL)
+        arrow(s, 1.9, y + 0.61, 1.9, y + 0.7, TEAL)
 
 prs.save(OUT)
 print(OUT, len(prs.slides))

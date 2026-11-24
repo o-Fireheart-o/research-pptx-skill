@@ -20,19 +20,21 @@
 
 Codex에 이렇게 말한다.
 
-> https://github.com/o-Fireheart-o/research-pptx-skill 저장소의 research-pptx 폴더를 내 Codex 스킬 폴더에
-> 설치해 줘.
+> https://github.com/o-Fireheart-o/research-pptx-skill 저장소의 research-pptx 폴더와 research-pptx-init
+> 폴더를 내 Codex 스킬 폴더에 설치해 줘.
 
 **2. ZIP으로 받기**
 
 1. 저장소 페이지에서 초록색 **Code** 버튼 > **Download ZIP**
-2. 압축을 풀고, 안에 있는 `research-pptx` 폴더를 `C:\Users\<사용자>\.codex\skills\`에 복사
+2. 압축을 풀고, 안에 있는 `research-pptx` 폴더와 `research-pptx-init` 폴더를
+   `C:\Users\<사용자>\.codex\skills\`에 복사
 
 **3. git 명령으로 받기 (PowerShell)**
 
 ```
 git clone https://github.com/o-Fireheart-o/research-pptx-skill.git
 Copy-Item -Recurse research-pptx-skill\research-pptx "$env:USERPROFILE\.codex\skills\"
+Copy-Item -Recurse research-pptx-skill\research-pptx-init "$env:USERPROFILE\.codex\skills\"
 ```
 
 설치 뒤의 모습은 `C:\Users\<사용자>\.codex\skills\research-pptx\SKILL.md`다. Codex를 다시 열고 "어떤 스킬을
@@ -41,17 +43,26 @@ Copy-Item -Recurse research-pptx-skill\research-pptx "$env:USERPROFILE\.codex\sk
 - 보이지 않으면 폴더를 `C:\Users\<사용자>\.agents\skills\`로 옮긴다. Codex 문서가 두 위치를 섞어 적고
   있다(2026-11 확인).
 - 한 작업 폴더에서만 쓰려면 `<작업 폴더>\.agents\skills\research-pptx\`에 넣는다.
-- 새 버전으로 바꿀 때는 같은 방법으로 다시 받아 `research-pptx` 폴더를 덮어쓴다.
+- 새 버전으로 바꿀 때는 같은 방법으로 다시 받아 두 폴더를 덮어쓴다.
+- 스킬은 두 개다. `research-pptx`는 PPT를 만들고, `research-pptx-init`은 작업 폴더를 준비하고 다음에 할 일을
+  알려 준다. 둘은 같은 스킬 폴더 안에 나란히 있어야 한다.
 
 ## 처음 쓸 때
 
-1. 작업 폴더를 하나 만들고 받은 자료를 넣는다.
+1. 빈 폴더를 하나 만들고(또는 자료가 든 폴더에서) Codex를 열어 말한다.
+   > 연구 PPT 폴더 만들어 줘.
+
+   폴더가 자동으로 만들어지고, 무엇을 어디에 넣을지 대화창에서 알려 준다. 폴더에 이미 파일이 있으면
+   어디로 옮길지 물어본다. (Codex에 원래 있는 `/init` 명령은 다른 기능이므로 위처럼 말로 한다.
+   `$research-pptx-init`이라고 입력해도 된다.)
    ```
    내과제/
-     template/   발표 양식이나 지난 발표 자료(.pptx)
-     source/     공고문, 초안, 논문, 데이터, 지난 제안서·보고서
-     figures/    쓸 그림
+     template/   발표 양식이나 지난 발표 자료(.pptx)   ← 넣는다
+     source/     공고문, 초안, 논문, 데이터, 지난 제안서·보고서   ← 넣는다
+     figures/    쓸 그림   ← 있으면 넣는다
+     output/, work/, 시작하기.md, AGENTS.md   ← 자동으로 만들어진다
    ```
+   중간에 무엇을 해야 할지 모르겠으면 "지금 뭘 하면 돼?"라고 묻는다.
 2. 그 폴더에서 Codex를 열고 말한다. 예:
    - "template에 있는 양식으로 연구 제안 발표 자료를 만들 거야. source 자료를 보고 스토리라인부터
      잡아 줘. 발표는 15분이야."
