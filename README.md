@@ -17,14 +17,28 @@
 
 ## 설치
 
-`research-pptx` 폴더를 통째로 스킬 폴더에 복사합니다.
+아래 셋 중 편한 방법을 씁니다.
+
+**1. Codex에게 시키기 (가장 쉬움)**
+
+> https://github.com/o-Fireheart-o/research-pptx-skill 저장소의 research-pptx 폴더를 내 Codex 스킬 폴더에
+> 설치해 줘.
+
+**2. ZIP으로 받기**
+
+1. 이 페이지 위쪽의 초록색 **Code** 버튼 > **Download ZIP**
+2. 압축을 풀고, 안에 있는 `research-pptx` 폴더를 `C:\Users\<사용자>\.codex\skills\`에 복사
+
+**3. git 명령으로 받기 (PowerShell)**
 
 ```
-C:\Users\<사용자>\.codex\skills\research-pptx\
+git clone https://github.com/o-Fireheart-o/research-pptx-skill.git
+Copy-Item -Recurse research-pptx-skill\research-pptx "$env:USERPROFILE\.codex\skills\"
 ```
 
-Codex를 다시 열고 "어떤 스킬을 쓸 수 있어?"라고 물어 `research-pptx`가 보이는지 확인합니다. 보이지 않으면
-`C:\Users\<사용자>\.agents\skills\`로 옮깁니다. 자세한 내용은 [`research-pptx/INSTALL.md`](research-pptx/INSTALL.md).
+설치 뒤 Codex를 다시 열고 "어떤 스킬을 쓸 수 있어?"라고 물어 `research-pptx`가 보이는지 확인합니다. 보이지
+않으면 폴더를 `C:\Users\<사용자>\.agents\skills\`로 옮깁니다. 자세한 내용은
+[`research-pptx/INSTALL.md`](research-pptx/INSTALL.md).
 
 ## 사용
 
