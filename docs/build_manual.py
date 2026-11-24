@@ -193,8 +193,60 @@ box(s, 6.8, 5.3, 5.9, 1.25,
      ("※ 스킬이 보이지 않으면 폴더를 .agents\\skills\\ 로 옮겨 봅니다", {"size": 11, "color": GRAY})],
     size=13, fillc=WHITE, linec=LINE)
 
+# ------------------------------------------------------------------ folder A: make a folder, open Codex
+s = new("작업 폴더 만들기 ① 폴더를 만들고 Codex 열기", "문서 하나에 폴더 하나. 빈 폴더만 만들면 나머지는 자동으로 준비됩니다", "2. 준비")
+steps4 = [("1", "새 폴더 만들기",
+           "파일 탐색기에서 원하는\n위치를 엽니다 (예: 문서)\n\n빈 곳을 오른쪽 클릭 >\n새로 만들기 > 폴더\n\n이름은 과제 이름으로\n예: 2027_센서과제_제안발표"),
+          ("2", "터미널 열기",
+           "만든 폴더를 더블클릭해\n들어갑니다\n\n폴더 안 빈 곳을 오른쪽 클릭 >\n터미널에서 열기"),
+          ("3", "Codex 실행",
+           "터미널에 아래를 입력하고\nEnter를 누릅니다\n\ncodex"),
+          ("4", "폴더 준비 시키기",
+           "Codex에 아래를 입력합니다\n\n$research-pptx-init\n\n(자세한 것은 다음 쪽)")]
+for i, (n, h, b) in enumerate(steps4):
+    x = 0.6 + i * 3.075
+    box(s, x, 1.9, 0.55, 0.55, n, size=18, fillc=TEAL, color=WHITE, bold=True, align=PP_ALIGN.CENTER)
+    box(s, x + 0.6, 1.9, 2.3, 0.55, h, size=14, fillc=NAVY, color=WHITE, bold=True)
+    box(s, x, 2.5, 2.9, 2.55, b, size=13, fillc=PALE, align=PP_ALIGN.CENTER)
+    if i < 3:
+        arrow(s, x + 2.92, 3.75, x + 3.06, 3.75)
+box(s, 0.6, 5.3, 12.1, 1.3,
+    ["※ Codex 앱을 쓰면 2~3번 대신 앱에서 이 폴더를 작업 폴더로 엽니다",
+     "※ 자료가 이미 들어 있는 폴더에서 시작해도 됩니다. 있던 파일은 지워지지 않고, 어디로 옮길지 물어봅니다",
+     "※ 다른 문서를 만들 때는 새 폴더를 만듭니다. 한 폴더에 두 문서를 섞지 않습니다"],
+    size=13, fillc=WHITE, linec=LINE, color=GRAY)
+
+# ------------------------------------------------------------------ folder B: using $research-pptx-init
+s = new("작업 폴더 만들기 ② $research-pptx-init 쓰기", "폴더를 만들어 주고, 지금 무엇을 하면 되는지 대화창에서 알려 주는 스킬입니다", "2. 준비")
+box(s, 0.6, 1.85, 5.9, 0.48, "부르는 방법 (셋 중 아무거나)", size=15, fillc=NAVY, color=WHITE, bold=True)
+say(s, 0.6, 2.38, 5.9, 0.68, "$research-pptx-init", size=14)
+say(s, 0.6, 3.11, 5.9, 0.68, "연구 PPT 폴더 만들어 줘.", size=14)
+say(s, 0.6, 3.84, 5.9, 0.68, "$research-pptx-init 2027 센서 과제 제안 발표", size=14)
+text(s, 0.6, 4.55, 5.9, 0.6,
+     ["※ $ 를 입력하면 설치된 스킬 목록이 나옵니다. 거기서 골라도 됩니다",
+      "※ 뒤에 문서 이름을 붙이면 작업 기록에 적어 둡니다"], size=11, color=GRAY, gap=1)
+box(s, 6.8, 1.85, 5.9, 0.48, "대화창에 이렇게 나옵니다", size=15, fillc=TEAL, color=WHITE, bold=True)
+box(s, 6.8, 2.38, 5.9, 2.75,
+    [("작업 폴더를 준비했습니다", {"bold": True}),
+     "",
+     ("지금 할 일", {"bold": True}),
+     "1. template 폴더에 발표 양식(.pptx)을 넣어 주세요",
+     "2. source 폴더에 공고문, 초안, 논문, 데이터를 넣어 주세요",
+     "3. 쓸 그림이 있으면 figures 폴더에 넣어 주세요",
+     "4. 다 넣으셨으면 이렇게 말해 주세요",
+     ("   \"template 양식으로 연구 제안 발표 자료를 만들 거야 …\"", {"color": TEAL, "bold": True})],
+    size=12, fillc=WHITE, linec=TEAL, anchor=MSO_ANCHOR.TOP, gap=2)
+three = [("빈 폴더에서 쓰면", "폴더와 안내 파일을 만들고\n무엇을 어디에 넣을지 알려 줍니다"),
+         ("파일이 있는 폴더에서 쓰면", "문서는 source, 그림은 figures로 옮길지 묻습니다\nPPT는 양식인지 참고 자료인지 묻습니다"),
+         ("작업 중에 다시 쓰면", "아무것도 바꾸지 않고\n지금 단계에서 할 일을 알려 줍니다")]
+for i, (h, b) in enumerate(three):
+    x = 0.6 + i * 4.1
+    box(s, x, 5.3, 3.85, 0.42, h, size=13, fillc=NAVY, color=WHITE, bold=True, align=PP_ALIGN.CENTER)
+    box(s, x, 5.74, 3.85, 0.8, b, size=11, fillc=PALE, align=PP_ALIGN.CENTER)
+text(s, 0.6, 6.6, 12.1, 0.35, "※ Codex에 원래 있는 /init 명령은 다른 기능입니다. 이 스킬은 $research-pptx-init 으로 부릅니다", size=12, color=RED, bold=True)
+
 # ------------------------------------------------------------------ 4 folder
-s = new("작업 폴더는 자동으로 만들어집니다", "빈 폴더에서 Codex를 열고 \"연구 PPT 폴더 만들어 줘\"라고 하면, 폴더를 만들고 다음에 할 일을 알려 줍니다", "2. 준비")
+s = new("작업 폴더 만들기 ③ 만들어진 폴더", "위의 세 폴더에 자료를 넣습니다. 나머지는 작업하면서 채워집니다", "2. 준비")
 rows = [("template", "발표 양식이나 지난 발표 자료 (.pptx)", "내가 넣음", NAVY),
         ("source", "공고문, 초안, 논문, 데이터, 지난 제안서·보고서", "내가 넣음", NAVY),
         ("figures", "쓸 그림과 그래프", "내가 넣음", NAVY),
@@ -397,7 +449,7 @@ for i, (q, a) in enumerate(faq):
 
 # ------------------------------------------------------------------ 15 cheat sheet
 s = new("한 장 요약", "순서대로 이렇게 말하면 됩니다", "5. 요령")
-steps = [("폴더 준비", "연구 PPT 폴더 만들어 줘.   (그다음 template과 source 폴더에 파일을 넣습니다)"),
+steps = [("폴더 준비", "$research-pptx-init   (그다음 template과 source 폴더에 파일을 넣습니다)"),
          ("시작", "template 양식으로 연구 제안 발표 자료를 만들 거야. source 자료를 보고 스토리라인부터 잡아 줘. 발표는 15분이야."),
          ("뼈대 덱을 고친 뒤", "뼈대 덱 고쳤어. 읽어 줘."),
          ("스토리라인 확정", "이대로 만들어 줘."),
