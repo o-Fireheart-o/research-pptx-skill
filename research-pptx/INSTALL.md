@@ -13,14 +13,35 @@
 
 ## 설치
 
-`research-pptx` 폴더를 통째로 Codex의 스킬 폴더에 복사한다.
+스킬은 GitHub 저장소 https://github.com/o-Fireheart-o/research-pptx-skill 에 있다. 아래 셋 중 편한
+방법을 쓴다.
 
-- 모든 작업에서 쓰려면: `C:\Users\<사용자>\.codex\skills\research-pptx\`
-- 한 작업 폴더에서만 쓰려면: `<작업 폴더>\.agents\skills\research-pptx\`
+**1. Codex에게 시키기 (가장 쉬움)**
 
-Codex 문서는 사용자 폴더 위치를 `~/.codex/skills`로 적은 곳과 `~/.agents/skills`로 적은 곳이 섞여
-있다(2026-11 확인). 복사한 뒤 Codex를 다시 시작하고 "어떤 스킬을 쓸 수 있어?"라고 물어
-`research-pptx`가 보이는지 확인한다. 안 보이면 다른 쪽 폴더에 넣는다.
+Codex에 이렇게 말한다.
+
+> https://github.com/o-Fireheart-o/research-pptx-skill 저장소의 research-pptx 폴더를 내 Codex 스킬 폴더에
+> 설치해 줘.
+
+**2. ZIP으로 받기**
+
+1. 저장소 페이지에서 초록색 **Code** 버튼 > **Download ZIP**
+2. 압축을 풀고, 안에 있는 `research-pptx` 폴더를 `C:\Users\<사용자>\.codex\skills\`에 복사
+
+**3. git 명령으로 받기 (PowerShell)**
+
+```
+git clone https://github.com/o-Fireheart-o/research-pptx-skill.git
+Copy-Item -Recurse research-pptx-skill\research-pptx "$env:USERPROFILE\.codex\skills\"
+```
+
+설치 뒤의 모습은 `C:\Users\<사용자>\.codex\skills\research-pptx\SKILL.md`다. Codex를 다시 열고 "어떤 스킬을
+쓸 수 있어?"라고 물어 `research-pptx`가 보이는지 확인한다.
+
+- 보이지 않으면 폴더를 `C:\Users\<사용자>\.agents\skills\`로 옮긴다. Codex 문서가 두 위치를 섞어 적고
+  있다(2026-11 확인).
+- 한 작업 폴더에서만 쓰려면 `<작업 폴더>\.agents\skills\research-pptx\`에 넣는다.
+- 새 버전으로 바꿀 때는 같은 방법으로 다시 받아 `research-pptx` 폴더를 덮어쓴다.
 
 ## 처음 쓸 때
 
