@@ -135,28 +135,62 @@ box(s, 0.6, 4.75, 12.1, 1.75,
      "· 결과의 해석을 자료보다 강하게 바꾸지 않습니다"],
     size=14, fillc=WARM, anchor=MSO_ANCHOR.MIDDLE)
 
-# ------------------------------------------------------------------ 3 install
-s = new("준비물과 설치", "한 번만 하면 됩니다", "2. 준비")
-box(s, 0.6, 1.85, 5.9, 0.5, "준비물", size=16, fillc=NAVY, color=WHITE, bold=True)
-box(s, 0.6, 2.4, 5.9, 2.5,
+# ------------------------------------------------------------------ 3 install: prerequisites + ask Codex
+REPO = "https://github.com/o-Fireheart-o/research-pptx-skill"
+s = new("설치 ① 준비물과 가장 쉬운 설치", "스킬은 GitHub에 있습니다. Codex에게 설치를 시키면 됩니다", "2. 준비")
+box(s, 0.6, 1.85, 5.2, 0.5, "준비물 (한 번만)", size=16, fillc=NAVY, color=WHITE, bold=True)
+box(s, 0.6, 2.4, 5.2, 2.55,
     ["· Windows PC와 PowerPoint",
      "· Codex (앱 또는 CLI)",
      "· Python 3.11 이상",
-     "· Python 패키지 세 개 (아래 명령을 한 번 실행)",
-     ("  python -m pip install python-pptx lxml Pillow", {"size": 12, "color": TEAL, "bold": True})],
+     "· Python 패키지 세 개",
+     ("  python -m pip install python-pptx lxml Pillow", {"size": 12, "color": TEAL, "bold": True}),
+     ("  ※ 없으면 스킬을 처음 쓸 때 설치해도 되는지 물어봅니다", {"size": 11, "color": GRAY})],
     size=14, fillc=PALE, anchor=MSO_ANCHOR.TOP)
-box(s, 6.8, 1.85, 5.9, 0.5, "설치", size=16, fillc=NAVY, color=WHITE, bold=True)
-box(s, 6.8, 2.4, 5.9, 2.5,
-    ["① research-pptx 폴더를 통째로 복사합니다",
-     ("  C:\\Users\\<사용자>\\.codex\\skills\\research-pptx", {"size": 12, "color": TEAL, "bold": True}),
-     "② Codex를 다시 엽니다",
-     "③ 스킬이 보이는지 물어봅니다",
-     ("  \"어떤 스킬을 쓸 수 있어?\"", {"size": 13, "color": TEAL, "bold": True})],
-    size=14, fillc=PALE, anchor=MSO_ANCHOR.TOP)
-box(s, 0.6, 5.2, 12.1, 1.2,
-    ["※ 목록에 research-pptx가 없으면 폴더를 C:\\Users\\<사용자>\\.agents\\skills\\ 로 옮기고 Codex를 다시 엽니다",
-     "※ 한 작업 폴더에서만 쓰려면 그 폴더 안의 .agents\\skills\\ 에 넣어도 됩니다"],
+box(s, 6.1, 1.85, 6.6, 0.5, "가장 쉬운 방법: Codex에게 시키기", size=16, fillc=TEAL, color=WHITE, bold=True)
+say(s, 6.1, 2.4, 6.6, 1.5,
+    REPO + " 저장소의 research-pptx 폴더를 내 Codex 스킬 폴더에 설치해 줘.", size=14)
+box(s, 6.1, 4.0, 6.6, 0.95,
+    ["① 위 문장을 Codex에 붙여 넣습니다",
+     "② 설치가 끝나면 Codex를 닫았다가 다시 엽니다"],
+    size=14, fillc=PALE)
+box(s, 0.6, 5.25, 5.9, 0.5, "설치 확인", size=15, fillc=NAVY, color=WHITE, bold=True)
+say(s, 0.6, 5.8, 5.9, 0.75, "어떤 스킬을 쓸 수 있어?", size=14)
+box(s, 6.8, 5.25, 5.9, 1.3,
+    ["목록에 research-pptx가 보이면 설치된 것입니다",
+     "보이지 않으면 다음 쪽의 방법으로 직접 설치합니다"],
     size=13, fillc=WHITE, linec=LINE, color=GRAY)
+
+# ------------------------------------------------------------------ 4 install: manual from GitHub
+s = new("설치 ② GitHub에서 직접 설치", REPO, "2. 준비")
+box(s, 0.6, 1.85, 5.9, 0.5, "방법 A: ZIP으로 받기", size=16, fillc=NAVY, color=WHITE, bold=True)
+box(s, 0.6, 2.4, 5.9, 2.65,
+    ["① 위 주소를 브라우저에서 엽니다",
+     "② 초록색 Code 버튼 > Download ZIP",
+     "③ 받은 ZIP의 압축을 풉니다",
+     "④ 안에 있는 research-pptx 폴더를 복사해 아래 위치에 붙여 넣습니다",
+     ("  C:\\Users\\<사용자>\\.codex\\skills\\", {"size": 13, "color": TEAL, "bold": True}),
+     "⑤ Codex를 다시 엽니다"],
+    size=13, fillc=PALE, anchor=MSO_ANCHOR.TOP)
+box(s, 6.8, 1.85, 5.9, 0.5, "방법 B: git 명령으로 받기 (PowerShell)", size=16, fillc=NAVY, color=WHITE, bold=True)
+box(s, 6.8, 2.4, 5.9, 2.65,
+    [("git clone " + REPO + ".git", {"size": 11, "color": TEAL, "bold": True}),
+     ("Copy-Item -Recurse research-pptx-skill\\research-pptx", {"size": 11, "color": TEAL, "bold": True}),
+     ("    \"$env:USERPROFILE\\.codex\\skills\\\"", {"size": 11, "color": TEAL, "bold": True}),
+     "",
+     "· 첫 줄은 저장소를 내려받고, 둘째 줄은 스킬 폴더를 Codex 스킬 폴더로 복사합니다",
+     "· 끝나면 Codex를 다시 엽니다"],
+    size=13, fillc=PALE, anchor=MSO_ANCHOR.TOP)
+box(s, 0.6, 5.3, 5.9, 1.25,
+    [("설치 후 폴더 모습", {"size": 14, "bold": True, "color": NAVY}),
+     ("C:\\Users\\<사용자>\\.codex\\skills\\research-pptx\\SKILL.md", {"size": 12, "color": TEAL, "bold": True}),
+     ("※ research-pptx 폴더 바로 안에 SKILL.md가 있어야 합니다", {"size": 11, "color": GRAY})],
+    size=13, fillc=WHITE, linec=LINE)
+box(s, 6.8, 5.3, 5.9, 1.25,
+    [("새 버전으로 바꾸기", {"size": 14, "bold": True, "color": NAVY}),
+     "같은 방법으로 다시 받아 research-pptx 폴더를 덮어씁니다",
+     ("※ 스킬이 보이지 않으면 폴더를 .agents\\skills\\ 로 옮겨 봅니다", {"size": 11, "color": GRAY})],
+    size=13, fillc=WHITE, linec=LINE)
 
 # ------------------------------------------------------------------ 4 folder
 s = new("작업 폴더 만들기", "문서 하나에 폴더 하나. 받은 자료를 세 폴더에 나눠 넣습니다", "2. 준비")
@@ -348,7 +382,7 @@ text(s, 0.6, 6.15, 12.1, 0.5, "※ 양식 기록은 C:\\Users\\<사용자>\\.res
 
 # ------------------------------------------------------------------ 14 faq
 s = new("자주 생기는 일", None, "5. 요령")
-faq = [("스킬이 안 쓰이는 것 같다", "\"research-pptx 스킬로 해 줘\"라고 말합니다. 그래도 안 되면 설치 폴더를 확인합니다 (3쪽)"),
+faq = [("스킬이 안 쓰이는 것 같다", "\"research-pptx 스킬로 해 줘\"라고 말합니다. 그래도 안 되면 설치 폴더를 확인합니다 (3~4쪽)"),
        ("뼈대 덱을 고쳤는데 반영이 안 됐다", "저장하고 PowerPoint를 닫았는지 봅니다. 1번 장 흐름도의 상자를 고친 것은 읽히지 않습니다"),
        ("[확인 필요]가 많이 남았다", "자료에 없는 내용입니다. 해당 자료를 source에 넣거나 값을 말해 주면 채워집니다"),
        ("글이 너무 많다 / 적다", "샘플 단계에서 말하는 것이 가장 좋습니다. 뒤에 말하면 모든 장을 다시 만듭니다"),
